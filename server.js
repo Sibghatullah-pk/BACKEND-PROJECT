@@ -27,8 +27,25 @@ app.post("/register", (req, res) => {
     req.body.password=  req.body.password.trim()
     if(req.body.username.trim() === '')
         errors.push("Username is required")
+    if (req.body.username === '') {
+    errors.push("Username is required");
+} else if (!/^[a-zA-Z0-9_]+$/.test(req.body.username)) {
+    errors.push("Username can only contain letters, numbers, and underscores");
+} else if (req.body.username.length < 3) {
+    errors.push("Username must be at least 3 characters");
+}
+
+// Password validation
+if (req.body.password === '') {
+    errors.push("Password is required");
+} else if (req.body.password.length < 6) {
+    errors.push("Password must be at least 6 characters");
+} else if (!/[a-zA-Z]/.test(req.body.password) || !/[0-9]/.test(req.body.password)) {
+    errors.push("Password must contain at least one letter and one number");
+}
+
      if(errors.length > 0) {
-        res.render("register", { errors: errors, username: req.body.username })
+        res.render("homepage", { errors})
         return
     }   else{
         console.log("Username:", req.body.username);

@@ -19,11 +19,10 @@
     <main>
 <form action="/register" method="POST">
 
-    <% 
-        errors.forEach(function(error) { %>
-            <p class="error">
-                <%= error.msg %></p>
-        <% }); %>
+   <% errors.forEach(function(error) { %> 
+    <p class="error"><%= error %></p> 
+<% }); %>
+
         <fieldset>
         <legend>Create an account </legend>
         <lable for="username">Username:</label>
