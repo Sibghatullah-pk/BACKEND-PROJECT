@@ -12,14 +12,24 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="#">Login</a></li>
+                <li><a href="/login">Login</a></li>
             </ul>
         </nav>    
     </header>
     <main>
-        <h1>Welcome to the Homepage</h1>
-        <p>This is a simple homepage template using EJS.</p>
+<form action="/signup" method="POST">
+        <fieldset>
+        <legend>Create an account </legend>
+        <lable for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <br/>
+        <button>Sign up</button>
+     </fieldset>
+</form>
+
         <p>Current date and time: <%= new Date().toLocaleString() %></p>
     </main> 
     <footer>
