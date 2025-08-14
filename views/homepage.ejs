@@ -1,45 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-    <header>
-        <h2>MY BACKEND PROJECT</h2>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/login">Login</a></li>
-            </ul>
-        </nav>    
-    </header>
-    <main>
-<form action="/register" method="POST">
+  <%- include('includes/head') %>
+  <body>
+    <%- include('includes/header') %>
 
-   <% errors.forEach(function(error) { %> 
-    <p class="error"><%= error %></p> 
-<% }); %>
+    <main>
+      <form action="/register" method="POST">
+        <% errors.forEach(error => { %>
+        <p class="notice"><%= error %></p>
+        <% }) %>
 
         <fieldset>
-        <legend>Create an account </legend>
-        <lable for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+          <legend>Create an account</legend>
+          <label for="username"><small>Username</small></label>
+          <input type="text" id="username" name="username" autocomplete="off" />
 
-        <br/>
-        <button>Sign up</button>
-     </fieldset>
-</form>
+          <label for="password"><small>Password</small></label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            autocomplete="off"
+          />
 
-        <p>Current date and time: <%= new Date().toLocaleString() %></p>
-    </main> 
-    <footer>
-        <p>&copy; 2023 Your Company</p>
-    </footer>
+          <br />
+          <button>Sign Up</button>
+        </fieldset>
+      </form>
+    </main>
 
-    </body>
+    <%- include('includes/footer') %>
+  </body>
 </html>
